@@ -1,0 +1,441 @@
+(openr1) ubuntu@192-222-54-82:~/open-r1$ ACCELERATE_LOG_LEVEL=info accelerate launch --config_file recipes/accelerate_configs/zero2.yaml \
+    --num_processes=7 src/open_r1/grpo.py \
+    --config recipes/Qwen2.5-Math-7B/grpo/config_simple_rl.yaml
+[2025-02-15 15:46:30,706] [INFO] [real_accelerator.py:219:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+INFO:root:Using nproc_per_node=7.
+W0215 15:46:31.618000 30271 torch/distributed/run.py:793] 
+W0215 15:46:31.618000 30271 torch/distributed/run.py:793] *****************************************
+W0215 15:46:31.618000 30271 torch/distributed/run.py:793] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W0215 15:46:31.618000 30271 torch/distributed/run.py:793] *****************************************
+[2025-02-15 15:46:37,184] [INFO] [real_accelerator.py:219:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-02-15 15:46:37,261] [INFO] [real_accelerator.py:219:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-02-15 15:46:37,414] [INFO] [real_accelerator.py:219:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-02-15 15:46:37,460] [INFO] [real_accelerator.py:219:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-02-15 15:46:37,504] [INFO] [real_accelerator.py:219:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-02-15 15:46:37,508] [INFO] [real_accelerator.py:219:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-02-15 15:46:37,597] [INFO] [real_accelerator.py:219:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+INFO 02-15 15:46:38 __init__.py:190] Automatically detected platform cuda.
+INFO 02-15 15:46:38 __init__.py:190] Automatically detected platform cuda.
+INFO 02-15 15:46:39 __init__.py:190] Automatically detected platform cuda.
+INFO 02-15 15:46:39 __init__.py:190] Automatically detected platform cuda.
+[2025-02-15 15:46:39,078] [INFO] [comm.py:652:init_distributed] cdb=None
+INFO 02-15 15:46:39 __init__.py:190] Automatically detected platform cuda.
+[2025-02-15 15:46:39,188] [INFO] [comm.py:652:init_distributed] cdb=None
+[2025-02-15 15:46:39,188] [INFO] [comm.py:683:init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
+INFO 02-15 15:46:39 __init__.py:190] Automatically detected platform cuda.
+INFO 02-15 15:46:39 __init__.py:190] Automatically detected platform cuda.
+[2025-02-15 15:46:39,404] [INFO] [comm.py:652:init_distributed] cdb=None
+[2025-02-15 15:46:39,406] [INFO] [comm.py:652:init_distributed] cdb=None
+2025-02-15 15:46:39 - WARNING - __main__ - Process rank: 0, device: cuda:0, n_gpu: 1 distributed training: True, 16-bits training: False
+2025-02-15 15:46:39 - INFO - __main__ - Model parameters ModelConfig(model_name_or_path='Qwen/Qwen2.5-Math-7B', model_revision='main', torch_dtype='bfloat16', trust_remote_code=False, attn_implementation='flash_attention_2', use_peft=False, lora_r=16, lora_alpha=32, lora_dropout=0.05, lora_target_modules=None, lora_modules_to_save=None, lora_task_type='CAUSAL_LM', use_rslora=False, load_in_8bit=False, load_in_4bit=False, bnb_4bit_quant_type='nf4', use_bnb_nested_quant=False)
+2025-02-15 15:46:39 - INFO - __main__ - Script parameters GRPOScriptArguments(dataset_name='DigitalLearningGmbH/MATH-lighteval', dataset_config=None, dataset_train_split='train', dataset_test_split='test', gradient_checkpointing_use_reentrant=False, ignore_bias_buffers=False, reward_funcs=['accuracy', 'format'], cosine_min_value_wrong=0.0, cosine_max_value_wrong=-0.5, cosine_min_value_correct=0.5, cosine_max_value_correct=1.0, cosine_max_len=1000, repetition_n_grams=3, repetition_max_penalty=-1.0)
+2025-02-15 15:46:39 - INFO - __main__ - Training parameters GRPOConfig(
+_n_gpu=1,
+accelerator_config={'split_batches': False, 'dispatch_batches': None, 'even_batches': True, 'use_seedable_sampler': True, 'non_blocking': False, 'gradient_accumulation_kwargs': None, 'use_configured_state': False},
+adafactor=False,
+adam_beta1=0.9,
+adam_beta2=0.999,
+adam_epsilon=1e-08,
+auto_find_batch_size=False,
+average_tokens_across_devices=False,
+batch_eval_metrics=False,
+benchmarks=[],
+beta=0.04,
+bf16=True,
+bf16_full_eval=False,
+callbacks=[],
+data_seed=None,
+dataloader_drop_last=False,
+dataloader_num_workers=0,
+dataloader_persistent_workers=False,
+dataloader_pin_memory=True,
+dataloader_prefetch_factor=None,
+ddp_backend=None,
+ddp_broadcast_buffers=None,
+ddp_bucket_cap_mb=None,
+ddp_find_unused_parameters=None,
+ddp_timeout=1800,
+debug=[],
+deepspeed=None,
+disable_tqdm=False,
+dispatch_batches=None,
+do_eval=True,
+do_predict=False,
+do_train=False,
+ds3_gather_for_generation=True,
+eval_accumulation_steps=None,
+eval_delay=0,
+eval_do_concat_batches=True,
+eval_on_start=False,
+eval_steps=100,
+eval_strategy=IntervalStrategy.STEPS,
+eval_use_gather_object=False,
+evaluation_strategy=None,
+fp16=False,
+fp16_backend=auto,
+fp16_full_eval=False,
+fp16_opt_level=O1,
+fsdp=[],
+fsdp_config={'min_num_params': 0, 'xla': False, 'xla_fsdp_v2': False, 'xla_fsdp_grad_ckpt': False},
+fsdp_min_num_params=0,
+fsdp_transformer_layer_cls_to_wrap=None,
+full_determinism=False,
+gradient_accumulation_steps=8,
+gradient_checkpointing=True,
+gradient_checkpointing_kwargs={'use_reentrant': False},
+greater_is_better=None,
+group_by_length=False,
+half_precision_backend=auto,
+hub_always_push=False,
+hub_model_id=Qwen-2.5-7B-Simple-RL,
+hub_model_revision=main,
+hub_private_repo=None,
+hub_strategy=HubStrategy.EVERY_SAVE,
+hub_token=<HUB_TOKEN>,
+ignore_data_skip=False,
+include_for_metrics=[],
+include_inputs_for_metrics=False,
+include_num_input_tokens_seen=False,
+include_tokens_per_second=False,
+jit_mode_eval=False,
+label_names=None,
+label_smoothing_factor=0.0,
+learning_rate=3e-06,
+length_column_name=length,
+load_best_model_at_end=False,
+local_rank=0,
+log_completions=False,
+log_level=info,
+log_level_replica=warning,
+log_on_each_node=True,
+logging_dir=data/Qwen-2.5-7B-Simple-RL/runs/Feb15_15-46-39_192-222-54-82,
+logging_first_step=False,
+logging_nan_inf_filter=True,
+logging_steps=5,
+logging_strategy=IntervalStrategy.STEPS,
+lr_scheduler_kwargs={},
+lr_scheduler_type=SchedulerType.COSINE,
+max_completion_length=1024,
+max_grad_norm=1.0,
+max_prompt_length=512,
+max_steps=-1,
+metric_for_best_model=None,
+model_init_kwargs=None,
+mp_parameters=,
+neftune_noise_alpha=None,
+no_cuda=False,
+num_generations=7,
+num_train_epochs=1,
+optim=OptimizerNames.ADAMW_TORCH,
+optim_args=None,
+optim_target_modules=None,
+output_dir=data/Qwen-2.5-7B-Simple-RL,
+overwrite_hub_revision=False,
+overwrite_output_dir=True,
+past_index=-1,
+per_device_eval_batch_size=16,
+per_device_train_batch_size=16,
+prediction_loss_only=False,
+push_to_hub=True,
+push_to_hub_model_id=None,
+push_to_hub_organization=None,
+push_to_hub_revision=False,
+push_to_hub_token=<PUSH_TO_HUB_TOKEN>,
+ray_scope=last,
+ref_model_mixup_alpha=0.9,
+ref_model_sync_steps=64,
+remove_unused_columns=False,
+report_to=['wandb'],
+restore_callback_states_from_checkpoint=False,
+resume_from_checkpoint=None,
+reward_weights=None,
+run_name=data/Qwen-2.5-7B-Simple-RL,
+save_on_each_node=False,
+save_only_model=False,
+save_safetensors=True,
+save_steps=500,
+save_strategy=SaveStrategy.NO,
+save_total_limit=None,
+seed=42,
+skip_memory_metrics=True,
+split_batches=None,
+sync_ref_model=False,
+system_prompt=None,
+temperature=0.9,
+tf32=None,
+torch_compile=False,
+torch_compile_backend=None,
+torch_compile_mode=None,
+torch_empty_cache_steps=None,
+torchdynamo=None,
+tpu_metrics_debug=False,
+tpu_num_cores=None,
+use_cpu=False,
+use_ipex=False,
+use_legacy_prediction_loop=False,
+use_liger_kernel=False,
+use_mps_device=False,
+use_vllm=True,
+vllm_device=auto,
+vllm_dtype=auto,
+vllm_gpu_memory_utilization=0.7,
+vllm_max_model_len=None,
+wandb_entity=None,
+wandb_project=None,
+warmup_ratio=0.1,
+warmup_steps=0,
+weight_decay=0.0,
+)
+[2025-02-15 15:46:39,496] [INFO] [comm.py:652:init_distributed] cdb=None
+[2025-02-15 15:46:39,623] [INFO] [comm.py:652:init_distributed] cdb=None
+[2025-02-15 15:46:39,686] [INFO] [comm.py:652:init_distributed] cdb=None
+2025-02-15 15:46:39 - WARNING - __main__ - Process rank: 2, device: cuda:2, n_gpu: 1 distributed training: True, 16-bits training: False
+README.md: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 8.41k/8.41k [00:00<00:00, 58.5MB/s]
+2025-02-15 15:46:40 - WARNING - __main__ - Process rank: 1, device: cuda:1, n_gpu: 1 distributed training: True, 16-bits training: False
+2025-02-15 15:46:40 - WARNING - __main__ - Process rank: 6, device: cuda:6, n_gpu: 1 distributed training: True, 16-bits training: False
+2025-02-15 15:46:40 - WARNING - __main__ - Process rank: 3, device: cuda:3, n_gpu: 1 distributed training: True, 16-bits training: False
+2025-02-15 15:46:40 - WARNING - __main__ - Process rank: 5, device: cuda:5, n_gpu: 1 distributed training: True, 16-bits training: False
+2025-02-15 15:46:40 - WARNING - __main__ - Process rank: 4, device: cuda:4, n_gpu: 1 distributed training: True, 16-bits training: False
+Generating dataset math-lighteval (/home/ubuntu/.cache/huggingface/datasets/DigitalLearningGmbH___math-lighteval/default/0.0.0/0530c78699ea5e8eb5530600900e1f328b48acad)
+2025-02-15 15:46:41 - INFO - datasets.builder - Generating dataset math-lighteval (/home/ubuntu/.cache/huggingface/datasets/DigitalLearningGmbH___math-lighteval/default/0.0.0/0530c78699ea5e8eb5530600900e1f328b48acad)
+Downloading and preparing dataset math-lighteval/default to /home/ubuntu/.cache/huggingface/datasets/DigitalLearningGmbH___math-lighteval/default/0.0.0/0530c78699ea5e8eb5530600900e1f328b48acad...
+2025-02-15 15:46:41 - INFO - datasets.builder - Downloading and preparing dataset math-lighteval/default to /home/ubuntu/.cache/huggingface/datasets/DigitalLearningGmbH___math-lighteval/default/0.0.0/0530c78699ea5e8eb5530600900e1f328b48acad...
+train-00000-of-00001.parquet: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2.99M/2.99M [00:00<00:00, 53.2MB/s]
+test-00000-of-00001.parquet: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1.86M/1.86M [00:00<00:00, 30.9MB/s]
+Downloading took 0.0 min
+2025-02-15 15:46:41 - INFO - datasets.download.download_manager - Downloading took 0.0 min
+Checksum Computation took 0.0 min
+2025-02-15 15:46:41 - INFO - datasets.download.download_manager - Checksum Computation took 0.0 min
+Generating train split
+2025-02-15 15:46:41 - INFO - datasets.builder - Generating train split
+Generating train split: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 7500/7500 [00:00<00:00, 383279.48 examples/s]
+Generating test split
+2025-02-15 15:46:41 - INFO - datasets.builder - Generating test split
+Generating test split: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 5000/5000 [00:00<00:00, 539224.52 examples/s]
+All the splits matched successfully.
+2025-02-15 15:46:41 - INFO - datasets.utils.info_utils - All the splits matched successfully.
+Dataset math-lighteval downloaded and prepared to /home/ubuntu/.cache/huggingface/datasets/DigitalLearningGmbH___math-lighteval/default/0.0.0/0530c78699ea5e8eb5530600900e1f328b48acad. Subsequent calls will reuse this data.
+2025-02-15 15:46:41 - INFO - datasets.builder - Dataset math-lighteval downloaded and prepared to /home/ubuntu/.cache/huggingface/datasets/DigitalLearningGmbH___math-lighteval/default/0.0.0/0530c78699ea5e8eb5530600900e1f328b48acad. Subsequent calls will reuse this data.
+Map:   0%|                                                                                                                                                  | 0/7500 [00:00<?, ? examples/s]Caching processed dataset at /home/ubuntu/.cache/huggingface/datasets/DigitalLearningGmbH___math-lighteval/default/0.0.0/0530c78699ea5e8eb5530600900e1f328b48acad/cache-4fda3246ce25d657.arrow
+2025-02-15 15:46:41 - INFO - datasets.arrow_dataset - Caching processed dataset at /home/ubuntu/.cache/huggingface/datasets/DigitalLearningGmbH___math-lighteval/default/0.0.0/0530c78699ea5e8eb5530600900e1f328b48acad/cache-4fda3246ce25d657.arrow
+Map: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 7500/7500 [00:00<00:00, 34672.92 examples/s]
+Map:   0%|                                                                                                                                                  | 0/5000 [00:00<?, ? examples/s]Caching processed dataset at /home/ubuntu/.cache/huggingface/datasets/DigitalLearningGmbH___math-lighteval/default/0.0.0/0530c78699ea5e8eb5530600900e1f328b48acad/cache-b5f7f9b4e044f184.arrow
+2025-02-15 15:46:41 - INFO - datasets.arrow_dataset - Caching processed dataset at /home/ubuntu/.cache/huggingface/datasets/DigitalLearningGmbH___math-lighteval/default/0.0.0/0530c78699ea5e8eb5530600900e1f328b48acad/cache-b5f7f9b4e044f184.arrow
+Map: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 7500/7500 [00:00<00:00, 34149.04 examples/s]
+Map: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 5000/5000 [00:00<00:00, 36632.31 examples/s]
+2025-02-15 15:46:41 - INFO - __main__ - *** Initializing model kwargs ***
+Map: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 5000/5000 [00:00<00:00, 34781.35 examples/s]
+Map: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 5000/5000 [00:00<00:00, 35198.63 examples/s]
+Map: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 7500/7500 [00:00<00:00, 34014.27 examples/s]
+Map: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 5000/5000 [00:00<00:00, 35257.39 examples/s]
+config.json: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 678/678 [00:00<00:00, 9.00MB/s]
+[INFO|configuration_utils.py:699] 2025-02-15 15:46:41,912 >> loading configuration file config.json from cache at /home/ubuntu/.cache/huggingface/hub/models--Qwen--Qwen2.5-Math-7B/snapshots/b101308fe89651ea5ce025f25317fea6fc07e96e/config.json
+[INFO|configuration_utils.py:771] 2025-02-15 15:46:41,913 >> Model config Qwen2Config {
+  "_name_or_path": "Qwen/Qwen2.5-Math-7B",
+  "architectures": [
+    "Qwen2ForCausalLM"
+  ],
+  "attention_dropout": 0.0,
+  "bos_token_id": 151643,
+  "eos_token_id": 151643,
+  "hidden_act": "silu",
+  "hidden_size": 3584,
+  "initializer_range": 0.02,
+  "intermediate_size": 18944,
+  "max_position_embeddings": 4096,
+  "max_window_layers": 28,
+  "model_type": "qwen2",
+  "num_attention_heads": 28,
+  "num_hidden_layers": 28,
+  "num_key_value_heads": 4,
+  "rms_norm_eps": 1e-06,
+  "rope_scaling": null,
+  "rope_theta": 10000,
+  "sliding_window": 4096,
+  "tie_word_embeddings": false,
+  "torch_dtype": "bfloat16",
+  "transformers_version": "4.49.0.dev0",
+  "use_cache": false,
+  "use_mrope": false,
+  "use_sliding_window": false,
+  "vocab_size": 152064
+}
+
+model.safetensors.index.json: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 27.8k/27.8k [00:00<00:00, 203MB/s]
+[INFO|modeling_utils.py:3982] 2025-02-15 15:46:42,112 >> loading weights file model.safetensors from cache at /home/ubuntu/.cache/huggingface/hub/models--Qwen--Qwen2.5-Math-7B/snapshots/b101308fe89651ea5ce025f25317fea6fc07e96e/model.safetensors.index.json
+model-00001-of-00004.safetensors: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 3.95G/3.95G [01:33<00:00, 42.0MB/s]
+model-00002-of-00004.safetensors: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 3.86G/3.86G [01:32<00:00, 41.9MB/s]
+model-00003-of-00004.safetensors: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 3.86G/3.86G [01:32<00:00, 42.0MB/s]
+model-00004-of-00004.safetensors: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 3.56G/3.56G [01:23<00:00, 42.4MB/s]
+Downloading shards: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4/4 [06:02<00:00, 90.67s/it]
+Downloading shards: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4/4 [06:02<00:00, 90.66s/it]
+[WARNING|logging.py:329] 2025-02-15 15:52:44,804 >> You are attempting to use Flash Attention 2.0 with a model not initialized on GPU. Make sure to move the model to GPU after initializing it on CPU with `model.to('cuda')`.
+[WARNING|logging.py:329] 2025-02-15 15:52:44,805 >> You are attempting to use Flash Attention 2.0 with a model not initialized on GPU. Make sure to move the model to GPU after initializing it on CPU with `model.to('cuda')`.
+Downloading shards: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4/4 [06:02<00:00, 90.67s/it]
+Downloading shards: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4/4 [06:02<00:00, 90.67s/it]
+[INFO|modeling_utils.py:1633] 2025-02-15 15:52:44,813 >> Instantiating Qwen2ForCausalLM model under default dtype torch.bfloat16.
+[WARNING|logging.py:329] 2025-02-15 15:52:44,815 >> You are attempting to use Flash Attention 2.0 with a model not initialized on GPU. Make sure to move the model to GPU after initializing it on CPU with `model.to('cuda')`.
+[WARNING|logging.py:329] 2025-02-15 15:52:44,815 >> You are attempting to use Flash Attention 2.0 with a model not initialized on GPU. Make sure to move the model to GPU after initializing it on CPU with `model.to('cuda')`.
+[INFO|configuration_utils.py:1140] 2025-02-15 15:52:44,817 >> Generate config GenerationConfig {
+  "bos_token_id": 151643,
+  "eos_token_id": 151643,
+  "use_cache": false
+}
+
+Downloading shards: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4/4 [06:02<00:00, 90.67s/it]
+[WARNING|logging.py:329] 2025-02-15 15:52:44,825 >> You are attempting to use Flash Attention 2.0 with a model not initialized on GPU. Make sure to move the model to GPU after initializing it on CPU with `model.to('cuda')`.
+Downloading shards: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4/4 [06:02<00:00, 90.67s/it]
+[WARNING|logging.py:329] 2025-02-15 15:52:44,840 >> You are attempting to use Flash Attention 2.0 with a model not initialized on GPU. Make sure to move the model to GPU after initializing it on CPU with `model.to('cuda')`.
+Downloading shards: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4/4 [06:02<00:00, 90.68s/it]
+Loading checkpoint shards:   0%|                                                                                                                                      | 0/4 [00:00<?, ?it/s][WARNING|logging.py:329] 2025-02-15 15:52:44,845 >> You are attempting to use Flash Attention 2.0 with a model not initialized on GPU. Make sure to move the model to GPU after initializing it on CPU with `model.to('cuda')`.
+Loading checkpoint shards: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00,  5.81it/s]
+Loading checkpoint shards: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4/4 [00:01<00:00,  4.00it/s]
+Loading checkpoint shards: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4/4 [00:01<00:00,  3.89it/s]
+Loading checkpoint shards: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4/4 [00:01<00:00,  3.94it/s]
+Loading checkpoint shards: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00,  4.01it/s]
+Loading checkpoint shards: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4/4 [00:01<00:00,  3.96it/s]
+Loading checkpoint shards: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4/4 [00:01<00:00,  3.79it/s]
+[INFO|modeling_utils.py:4970] 2025-02-15 15:52:45,900 >> All model checkpoint weights were used when initializing Qwen2ForCausalLM.
+
+[INFO|modeling_utils.py:4978] 2025-02-15 15:52:45,900 >> All the weights of Qwen2ForCausalLM were initialized from the model checkpoint at Qwen/Qwen2.5-Math-7B.
+If your task is similar to the task the model of the checkpoint was trained on, you can already use Qwen2ForCausalLM for predictions without further training.
+generation_config.json: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 138/138 [00:00<00:00, 2.00MB/s]
+[INFO|configuration_utils.py:1095] 2025-02-15 15:52:46,061 >> loading configuration file generation_config.json from cache at /home/ubuntu/.cache/huggingface/hub/models--Qwen--Qwen2.5-Math-7B/snapshots/b101308fe89651ea5ce025f25317fea6fc07e96e/generation_config.json
+[INFO|configuration_utils.py:1140] 2025-02-15 15:52:46,061 >> Generate config GenerationConfig {
+  "bos_token_id": 151643,
+  "eos_token_id": 151643,
+  "max_new_tokens": 2048
+}
+
+tokenizer_config.json: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 7.32k/7.32k [00:00<00:00, 31.4MB/s]
+vocab.json: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2.78M/2.78M [00:00<00:00, 17.9MB/s]
+merges.txt: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1.67M/1.67M [00:00<00:00, 13.6MB/s]
+tokenizer.json: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 7.03M/7.03M [00:00<00:00, 27.4MB/s]
+[INFO|tokenization_utils_base.py:2050] 2025-02-15 15:52:54,367 >> loading file vocab.json from cache at /home/ubuntu/.cache/huggingface/hub/models--Qwen--Qwen2.5-Math-7B/snapshots/b101308fe89651ea5ce025f25317fea6fc07e96e/vocab.json
+[INFO|tokenization_utils_base.py:2050] 2025-02-15 15:52:54,367 >> loading file merges.txt from cache at /home/ubuntu/.cache/huggingface/hub/models--Qwen--Qwen2.5-Math-7B/snapshots/b101308fe89651ea5ce025f25317fea6fc07e96e/merges.txt
+[INFO|tokenization_utils_base.py:2050] 2025-02-15 15:52:54,367 >> loading file tokenizer.json from cache at /home/ubuntu/.cache/huggingface/hub/models--Qwen--Qwen2.5-Math-7B/snapshots/b101308fe89651ea5ce025f25317fea6fc07e96e/tokenizer.json
+[INFO|tokenization_utils_base.py:2050] 2025-02-15 15:52:54,367 >> loading file added_tokens.json from cache at None
+[INFO|tokenization_utils_base.py:2050] 2025-02-15 15:52:54,367 >> loading file special_tokens_map.json from cache at None
+[INFO|tokenization_utils_base.py:2050] 2025-02-15 15:52:54,367 >> loading file tokenizer_config.json from cache at /home/ubuntu/.cache/huggingface/hub/models--Qwen--Qwen2.5-Math-7B/snapshots/b101308fe89651ea5ce025f25317fea6fc07e96e/tokenizer_config.json
+[INFO|tokenization_utils_base.py:2050] 2025-02-15 15:52:54,367 >> loading file chat_template.jinja from cache at None
+[rank5]:[W215 15:52:54.132733532 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 5]  using GPU 5 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank6]:[W215 15:52:54.158542787 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 6]  using GPU 6 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank1]:[W215 15:52:54.178068595 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 1]  using GPU 1 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank3]:[W215 15:52:54.187428643 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 3]  using GPU 3 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank2]:[W215 15:52:54.205969582 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 2]  using GPU 2 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[INFO|tokenization_utils_base.py:2313] 2025-02-15 15:52:54,612 >> Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+[INFO|trainer.py:746] 2025-02-15 15:52:54,698 >> Using auto half precision backend
+[rank4]:[W215 15:52:54.540678408 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 4]  using GPU 4 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[INFO|configuration_utils.py:699] 2025-02-15 15:52:55,005 >> loading configuration file config.json from cache at /home/ubuntu/.cache/huggingface/hub/models--Qwen--Qwen2.5-Math-7B/snapshots/b101308fe89651ea5ce025f25317fea6fc07e96e/config.json
+[INFO|configuration_utils.py:699] 2025-02-15 15:52:55,074 >> loading configuration file config.json from cache at /home/ubuntu/.cache/huggingface/hub/models--Qwen--Qwen2.5-Math-7B/snapshots/b101308fe89651ea5ce025f25317fea6fc07e96e/config.json
+[INFO|configuration_utils.py:771] 2025-02-15 15:52:55,074 >> Model config Qwen2Config {
+  "_name_or_path": "Qwen/Qwen2.5-Math-7B",
+  "architectures": [
+    "Qwen2ForCausalLM"
+  ],
+  "attention_dropout": 0.0,
+  "bos_token_id": 151643,
+  "eos_token_id": 151643,
+  "hidden_act": "silu",
+  "hidden_size": 3584,
+  "initializer_range": 0.02,
+  "intermediate_size": 18944,
+  "max_position_embeddings": 4096,
+  "max_window_layers": 28,
+  "model_type": "qwen2",
+  "num_attention_heads": 28,
+  "num_hidden_layers": 28,
+  "num_key_value_heads": 4,
+  "rms_norm_eps": 1e-06,
+  "rope_scaling": null,
+  "rope_theta": 10000,
+  "sliding_window": 4096,
+  "tie_word_embeddings": false,
+  "torch_dtype": "bfloat16",
+  "transformers_version": "4.49.0.dev0",
+  "use_cache": true,
+  "use_mrope": false,
+  "use_sliding_window": false,
+  "vocab_size": 152064
+}
+
+[INFO|image_processing_auto.py:301] 2025-02-15 15:52:55,608 >> Could not locate the image processor configuration file, will try to use the model config instead.
+INFO 02-15 15:53:00 config.py:542] This model supports multiple tasks: {'score', 'generate', 'reward', 'embed', 'classify'}. Defaulting to 'generate'.
+INFO 02-15 15:53:00 llm_engine.py:234] Initializing a V0 LLM engine (v0.7.2) with config: model='Qwen/Qwen2.5-Math-7B', speculative_config=None, tokenizer='Qwen/Qwen2.5-Math-7B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=4096, download_dir=None, load_format=LoadFormat.AUTO, tensor_parallel_size=1, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto,  device_config=cuda:7, decoding_config=DecodingConfig(guided_decoding_backend='xgrammar'), observability_config=ObservabilityConfig(otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=0, served_model_name=Qwen/Qwen2.5-Math-7B, num_scheduler_steps=1, multi_step_stream_outputs=True, enable_prefix_caching=True, chunked_prefill_enabled=False, use_async_output_proc=True, disable_mm_preprocessor_cache=False, mm_processor_kwargs=None, pooler_config=None, compilation_config={"splitting_ops":[],"compile_sizes":[],"cudagraph_capture_sizes":[256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"max_capture_size":256}, use_cached_outputs=False, 
+[INFO|tokenization_utils_base.py:2050] 2025-02-15 15:53:00,726 >> loading file vocab.json from cache at /home/ubuntu/.cache/huggingface/hub/models--Qwen--Qwen2.5-Math-7B/snapshots/b101308fe89651ea5ce025f25317fea6fc07e96e/vocab.json
+[INFO|tokenization_utils_base.py:2050] 2025-02-15 15:53:00,726 >> loading file merges.txt from cache at /home/ubuntu/.cache/huggingface/hub/models--Qwen--Qwen2.5-Math-7B/snapshots/b101308fe89651ea5ce025f25317fea6fc07e96e/merges.txt
+[INFO|tokenization_utils_base.py:2050] 2025-02-15 15:53:00,726 >> loading file tokenizer.json from cache at /home/ubuntu/.cache/huggingface/hub/models--Qwen--Qwen2.5-Math-7B/snapshots/b101308fe89651ea5ce025f25317fea6fc07e96e/tokenizer.json
+[INFO|tokenization_utils_base.py:2050] 2025-02-15 15:53:00,726 >> loading file added_tokens.json from cache at None
+[INFO|tokenization_utils_base.py:2050] 2025-02-15 15:53:00,726 >> loading file special_tokens_map.json from cache at None
+[INFO|tokenization_utils_base.py:2050] 2025-02-15 15:53:00,726 >> loading file tokenizer_config.json from cache at /home/ubuntu/.cache/huggingface/hub/models--Qwen--Qwen2.5-Math-7B/snapshots/b101308fe89651ea5ce025f25317fea6fc07e96e/tokenizer_config.json
+[INFO|tokenization_utils_base.py:2050] 2025-02-15 15:53:00,726 >> loading file chat_template.jinja from cache at None
+[INFO|tokenization_utils_base.py:2313] 2025-02-15 15:53:00,949 >> Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+[INFO|configuration_utils.py:1095] 2025-02-15 15:53:01,075 >> loading configuration file generation_config.json from cache at /home/ubuntu/.cache/huggingface/hub/models--Qwen--Qwen2.5-Math-7B/snapshots/b101308fe89651ea5ce025f25317fea6fc07e96e/generation_config.json
+[INFO|configuration_utils.py:1140] 2025-02-15 15:53:01,075 >> Generate config GenerationConfig {
+  "bos_token_id": 151643,
+  "eos_token_id": 151643,
+  "max_new_tokens": 2048
+}
+
+INFO 02-15 15:53:01 cuda.py:230] Using Flash Attention backend.
+INFO 02-15 15:53:01 model_runner.py:1110] Starting to load model Qwen/Qwen2.5-Math-7B...
+INFO 02-15 15:53:01 weight_utils.py:252] Using model weights format ['*.safetensors']
+Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:00<00:01,  1.86it/s]
+Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:01<00:01,  1.57it/s]
+Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:01<00:00,  1.67it/s]
+Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:02<00:00,  1.68it/s]
+Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:02<00:00,  1.67it/s]
+
+INFO 02-15 15:53:04 model_runner.py:1115] Loading model weights took 0.0000 GB
+INFO 02-15 15:53:05 worker.py:267] Memory profiling takes 0.55 seconds
+INFO 02-15 15:53:05 worker.py:267] the current vLLM instance can use total_gpu_memory (79.10GiB) x gpu_memory_utilization (0.70) = 55.37GiB
+INFO 02-15 15:53:05 worker.py:267] model weights take 0.00GiB; non_torch_memory takes 0.00GiB; PyTorch activation peak memory takes 0.00GiB; the rest of the memory reserved for KV Cache is 55.37GiB.
+INFO 02-15 15:53:05 executor_base.py:110] # CUDA blocks: 64795, # CPU blocks: 4681
+INFO 02-15 15:53:05 executor_base.py:115] Maximum concurrency for 4096 tokens per request: 253.11x
+INFO 02-15 15:53:08 model_runner.py:1434] Capturing cudagraphs for decoding. This may lead to unexpected consequences if the model is not static. To run the model in eager mode, set 'enforce_eager=True' or use '--enforce-eager' in the CLI. If out-of-memory error occurs during cudagraph capture, consider decreasing `gpu_memory_utilization` or switching to eager mode. You can also reduce the `max_num_seqs` as needed to decrease memory usage.
+Capturing CUDA graph shapes: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 35/35 [00:11<00:00,  2.95it/s]
+INFO 02-15 15:53:20 model_runner.py:1562] Graph capturing finished in 12 secs, took 0.00 GiB
+INFO 02-15 15:53:20 llm_engine.py:431] init engine (profile, create kv cache, warmup model) took 15.53 seconds
+[rank0]:[W215 15:53:21.103861426 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 0]  using GPU 0 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+W0215 15:53:26.867000 30271 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 30485 closing signal SIGTERM
+W0215 15:53:26.867000 30271 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 30486 closing signal SIGTERM
+W0215 15:53:26.867000 30271 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 30487 closing signal SIGTERM
+W0215 15:53:26.867000 30271 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 30488 closing signal SIGTERM
+W0215 15:53:26.867000 30271 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 30490 closing signal SIGTERM
+W0215 15:53:26.868000 30271 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 30491 closing signal SIGTERM
+E0215 15:53:28.712000 30271 torch/distributed/elastic/multiprocessing/api.py:869] failed (exitcode: -11) local_rank: 4 (pid: 30489) of binary: /home/ubuntu/open-r1/openr1/bin/python3
+Traceback (most recent call last):
+  File "/home/ubuntu/open-r1/openr1/bin/accelerate", line 10, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/ubuntu/open-r1/openr1/lib/python3.11/site-packages/accelerate/commands/accelerate_cli.py", line 48, in main
+    args.func(args)
+  File "/home/ubuntu/open-r1/openr1/lib/python3.11/site-packages/accelerate/commands/launch.py", line 1157, in launch_command
+    deepspeed_launcher(args)
+  File "/home/ubuntu/open-r1/openr1/lib/python3.11/site-packages/accelerate/commands/launch.py", line 845, in deepspeed_launcher
+    distrib_run.run(args)
+  File "/home/ubuntu/open-r1/openr1/lib/python3.11/site-packages/torch/distributed/run.py", line 910, in run
+    elastic_launch(
+  File "/home/ubuntu/open-r1/openr1/lib/python3.11/site-packages/torch/distributed/launcher/api.py", line 138, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/open-r1/openr1/lib/python3.11/site-packages/torch/distributed/launcher/api.py", line 269, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+=======================================================
+src/open_r1/grpo.py FAILED
+-------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+-------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2025-02-15_15:53:26
+  host      : 192-222-54-82
+  rank      : 4 (local_rank: 4)
+  exitcode  : -11 (pid: 30489)
+  error_file: <N/A>
+  traceback : Signal 11 (SIGSEGV) received by PID 30489
+=======================================================
+(openr1) ubuntu@192-222-54-82:~/open-r1$ 

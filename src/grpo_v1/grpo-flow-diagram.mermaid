@@ -1,0 +1,113 @@
+flowchart TD
+    subgraph Initialization
+        A[Start with pre-trained language model]
+        B[Initialize tokenizer and reward function]
+    end
+
+    subgraph IterativeTraining[Iterative Training Loop]
+        C[Start iteration n]
+        D[Create reference model as deep copy of current policy model]
+        E[Set reference model to evaluation mode]
+        F[Initialize AdamW optimizer for policy model]
+    end
+
+    subgraph BatchProcessing[Batch Processing Loop]
+        G[Sample random batch from training data]
+        H[Generate rollout data for batch]
+        H1[Encode prompts with tokenizer]
+        H2[Generate multiple completions for each prompt]
+        H3[Compute log probabilities from policy and reference models]
+        H4[Prepare formatted completions for reward calculation]
+    end
+
+    subgraph PolicyUpdate[Policy Update Loop]
+        I[Compute GRPO loss]
+        I1[Calculate current token log probabilities]
+        I2[Compute probability ratio between current and old policies]
+        I3[Calculate rewards using reward function]
+        I4[Compute advantages by standardizing rewards]
+        I5[Calculate PPO surrogate objective with clipping]
+        I6[Calculate KL divergence between reference and policy models]
+        I7[Combine surrogate loss and KL penalty]
+        J[Backpropagate loss and update model parameters]
+        K[Clip gradients and apply optimizer step]
+    end
+
+    subgraph Completion
+        L[Return trained model]
+    end
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E --> F
+    F --> G
+    G --> H
+    H --> H1
+    H1 --> H2
+    H2 --> H3
+    H3 --> H4
+    H4 --> I
+    I --> I1
+    I1 --> I2
+    I2 --> I3
+    I3 --> I4
+    I4 --> I5
+    I5 --> I6
+    I6 --> I7
+    I7 --> J
+    J --> K
+    K --> N{Completed μ updates?}
+    N -->|No| I
+    N -->|Yes| M{Completed all steps?}
+    M -->|No| G
+    M -->|Yes| O{Completed all iterations?}
+    O -->|No| C
+    O -->|Yes| L
+
+    subgraph FunctionDetails[Key Function Details]
+        function1[generate_completions:
+        - Encodes prompts
+        - Repeats prompts for multiple generations
+        - Generates completions using model
+        - Creates completion mask]
+
+        function2[compute_log_probs:
+        - Gets logits from model
+        - Selects logits for relevant tokens
+        - Computes log probabilities using softmax]
+
+        function3[create_completion_mask:
+        - Identifies EOS token positions
+        - Creates mask for valid tokens]
+
+        function4[generate_rollout_data:
+        - Generates completions
+        - Computes log probabilities
+        - Formats data for GRPO loss calculation]
+
+        function5[grpo_loss:
+        - Computes probability ratios
+        - Calculates advantages
+        - Applies PPO clipping
+        - Adds KL penalty
+        - Returns final loss]
+    end
+
+    subgraph KeyParameters[Key Algorithm Parameters]
+        param1[num_iterations: Number of reference model updates]
+        param2[num_steps: Number of batch updates per iteration]
+        param3[batch_size: Number of prompts per batch]
+        param4[num_generations: Completions per prompt]
+        param5[max_completion_length: Max token length]
+        param6[beta: KL penalty coefficient]
+        param7[epsilon: PPO clipping parameter]
+        param8[mu: Policy updates per batch]
+    end
+
+    H -.-> function1
+    H3 -.-> function2
+    H2 -.-> function3
+    H -.-> function4
+    I -.-> function5
